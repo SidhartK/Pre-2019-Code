@@ -1,0 +1,61 @@
+#include <iostream>
+
+using namespace std;
+
+unsigned long factorial (int A)
+{
+	unsigned long x;
+
+	x = 1;
+
+	for (int i = 1; i <= A; i++)
+	{
+		x = i * x;
+	}
+	return x;
+}
+
+unsigned long choose (int A, int B)
+{
+	unsigned long x;
+	unsigned long y; 
+	unsigned long z;
+	unsigned long w;
+
+	x = factorial(A);
+	y = factorial(B);
+	z = factorial(A - B);
+	w = x / (y * z);
+
+	return w;
+
+}
+
+int main()
+{
+	int n;
+	
+	std::cout << "Enter n" << std::endl;
+	std::cin >> n;
+
+	unsigned long S;
+	S = 0;
+
+	for (int i = 0; i <= n; i++)
+	{
+		for (int j = 0; j <= n - i; j++)
+		{
+			unsigned long x;
+			unsigned long y;
+			unsigned long z;
+
+			x = choose(n,i);
+			y = choose(n,j);
+			z = choose(n,i + j);
+
+			S = S + (x * y * z);
+		}
+	}
+
+	std::cout << "The Answer is " << S << std::endl;
+}
